@@ -1,0 +1,30 @@
+- name: Install neovim
+  ansible.builtin.package:
+    name: neovim
+    state: present
+  tags:
+  - nvim
+  - install
+
+- name: Install Packer(nvim package manager)
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    depth: 1
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  tags:
+  - nvim
+  - install
+
+- name: Clone nvim config
+  ansible.builtin.git:
+    repo: https://github.com/DanielBarton446/nvim.git
+    dest: ~/.config/nvim
+  tags:
+  - nvim
+  - install
+
+- name: install nvim config
+  shell: nvim --headless +PackerInstall +"sleep 5" +qall
+  tags:
+  - nvim
+  - install

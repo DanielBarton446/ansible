@@ -1,0 +1,18 @@
+- name: Install zsh
+  ansible.builtin.package:
+    name: zsh
+    state: present
+  tags:
+    - zsh
+    - install
+
+- name: Install oh-my-zsh
+  # this might be a little dangerous.
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags: 
+    - zsh
