@@ -10,3 +10,5 @@
     - include: ./tasks/node-setup.yml
     - include: ./tasks/nvim-setup.yml
     - include: ./tasks/zsh-setup.yml
+    - include: ./tasks/alacritty_install.yml
+    - include: ./tasks/i3-setup.yml

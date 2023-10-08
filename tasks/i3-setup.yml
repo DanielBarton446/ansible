@@ -1,0 +1,15 @@
+- name: Install i3
+  ansible.builtin.package:
+    name: i3-wm 
+    state: present
+  tags:
+    - i3
+    - install
+
+- name: Clone i3 config
+  ansible.builtin.git:
+    repo: https://github.com/DanielBarton446/i3.git
+    dest: ~/.config/i3
+  tags:
+  - i3
+  - install

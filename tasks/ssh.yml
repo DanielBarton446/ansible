@@ -1,3 +1,11 @@
+- name: Ensure ssh is installed
+  ansible.builtin.package:
+    name: ['openssh']
+    state: present
+  tags:
+  - ssh
+  - install
+
 - name: Ensure .ssh directory exists.
   file:
     dest: "{{ dest_key | dirname }}"
